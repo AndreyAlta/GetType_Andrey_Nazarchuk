@@ -19,7 +19,7 @@ namespace GetType
         static string GetType(ref string type, string x)
         {
             long number = 0;
-            bool integer = false;
+            bool integer;
             try
             {
                 number = Convert.ToInt64(x);
