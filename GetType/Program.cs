@@ -10,33 +10,33 @@ namespace GetType
             while (true)
             {
                 Console.Write("Введите что угодно: ");
-                string x = Console.ReadLine();
+                object input = Console.ReadLine();
                 string type = "";
-                GetType (ref type, x);
-                Console.WriteLine($"{x} is {type}\n");
+                GetType (ref type, input);
+                Console.WriteLine($"{input} is {type}\n");
             }
         }
-        static string GetType(ref string type, string x)
+        static object GetType(ref string type, object input)
         {
             long number = 0;
             bool integer;
             try
             {
-                number = Convert.ToInt64(x);
+                number = Convert.ToInt64(input);
                 integer = true;
             }
             catch
             {
                 try
                 {
-                    Convert.ToUInt64(x);
+                    Convert.ToUInt64(input);
                     return type = "uint64";
                 }
                 catch
                 {
                     try
                     {
-                        Convert.ToDouble(x);
+                        Convert.ToDouble(input);
                         return type = "double";
                     }
                     catch
@@ -73,12 +73,13 @@ namespace GetType
             }
             else
             {
+                string str= Convert.ToString(input);
                 switch (true)
                 {
-                    case true when x.Length > 1:
+                    case true when str.Length > 1:
                         return type = "string";
 
-                    case true when x.Length == 1:
+                    case true when str.Length == 1:
                         return type = "char";
                 }
             }
